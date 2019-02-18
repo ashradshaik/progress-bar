@@ -324,27 +324,16 @@ $(document).ready(function(){
 	    $('body,html').animate({scrollTop: a }, 1e3);	    
     });
 
-	var firstElement = document.getElementById('first-element').offsetTop;
-	var m1 = firstElement/heightPage *100;
-	$('.progress-buttons ul li a.first').css('left', m1+'%');
-
-	var secondElement = document.getElementById('second-element').offsetTop;
-	var m2 = secondElement/heightPage *100;
-	$('.progress-buttons ul li a.second').css('left', m2+'%');
-
-	var thirdElement = document.getElementById('third-element').offsetTop;
-	var m3 = thirdElement/heightPage *100;
-	$('.progress-buttons ul li a.third').css('left', m3+'%');
-
-	var fourthElement = document.getElementById('fourth-element').offsetTop;
-	var m4 = fourthElement/heightPage *100;
-	$('.progress-buttons ul li a.fourth').css('left', m4+'%');
-
-	var fifthElement = document.getElementById('fifth-element').offsetTop;
-	var m5 = fifthElement/heightPage *100;
-	$('.progress-buttons ul li a.fifth').css('left', m5+'%');
-
-  var scrolling = $(window).scrollTop();
+	var progressButton = $('.progress-buttons ul li a');
+    var buttonPress = $(document).height() - $(window).height();
+    var height = [];
+    var x = [];
+    for(var j=0;j<progressButton.length;j++){
+        var progressButtonClassname = progressButton[j].className;
+    	x[j] = document.getElementById(progressButtonClassname+'-element').offsetTop;
+    	height[j] = x[j]/buttonPress *100;
+	    $('.progress-buttons ul li a.'+progressButton[j].className).css('left', height[j]+'%');
+    }
 
   
 
